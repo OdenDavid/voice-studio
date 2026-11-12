@@ -1,0 +1,76 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+ENV/
+env/
+
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+.pnpm-debug.log
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+
+# Data directories (mounted as volumes at runtime, never baked into the image)
+data/
+models/
+tools/
+reference/
+
+# Logs
+logs/
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# Documentation (not needed in container)
+docs/
+
+# CI/CD
+.github/
+
+# Development scripts
+scripts/install.sh
+scripts/start.sh
+scripts/stop.sh
+
+# Frontend source (only built assets needed)
+app/frontend/src/
+app/frontend/public/
+app/frontend/node_modules/
+app/frontend/package*.json
+app/frontend/tsconfig*.json
+app/frontend/vite.config.ts
+
+# Test files
+tests/
+test_*.py
+*_test.py
+
+# Temporary files
+*.tmp
+*.temp
+.cache/

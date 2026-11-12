@@ -1,0 +1,46 @@
+# --- Python ---
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# --- Node / frontend build output ---
+node_modules/
+dist/
+*.tsbuildinfo
+
+# --- Secrets / local config ---
+.env
+.env.*
+!.env.example
+
+# --- Private / large local assets (never publish) ---
+# data/ holds the user's voice recordings + generated audio + metadata.
+# models/ and tools/ hold downloaded weights and the Pocket TTS binary.
+# reference/ is a local clone of upstream MOSS-TTS-Nano (see README).
+data/
+models/
+tools/
+reference/
+
+# --- Model weight formats (safety net) ---
+*.onnx
+*.safetensors
+*.safetensors.bak
+*.data
+*.pt
+*.bin
+
+# --- Logs / OS / editor ---
+logs/
+*.log
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*~

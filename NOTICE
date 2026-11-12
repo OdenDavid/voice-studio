@@ -1,0 +1,16 @@
+Local Voice Studio
+Copyright 2026 the voice-studio authors
+
+This product includes software developed by OpenMOSS
+(https://github.com/OpenMOSS/MOSS-TTS-Nano), licensed under the
+Apache License, Version 2.0. The vendored runtime files are located in
+app/backend/vendor/ and retain their original licence text
+(app/backend/vendor/MOSS-TTS-Nano-LICENSE.txt).
+
+"Pocket TTS" (https://github.com/kyutai-labs/pocket-tts) is distributed
+under the MIT licence. Its English speech model weights are licensed
+CC-BY-4.0 and are downloaded at install time by scripts/download_models.sh;
+they are not part of this repository.
+
+FFmpeg is used through the `imageio-ffmpeg` Python package (LGPL builds);
+no FFmpeg binary is redistributed here.

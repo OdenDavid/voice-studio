@@ -1,0 +1,68 @@
+version: '3.8'
+
+services:
+  voice-studio:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: voice-studio
+    restart: unless-stopped
+    
+    ports:
+      - "8200:8200"
+    
+    volumes:
+      # Persist voice recordings and generated audio
+      - ./data:/app/data
+      # Persist model weights (avoid re-downloading)
+      - ./models:/app/models
+      # Persist the Pocket TTS binary
+      - ./tools:/app/tools
+      # Optional: mount custom config
+      # - ./config:/app/config
+    
+    environment:
+      # API Configuration
+      - VOICE_STUDIO_HOST=0.0.0.0
+      - VOICE_STUDIO_PORT=8200
+      
+      # Resource paths
+      - VOICE_STUDIO_DATA_DIR=/app/data
+      - VOICE_STUDIO_MODELS_DIR=/app/models
+      
+      # Performance tuning
+      - VOICE_STUDIO_MOSS_THREADS=4
+      - VOICE_STUDIO_DEFAULT_ENGINE=moss
+      
+      # Optional: Hugging Face token for Pocket TTS gated weights
+      # - HF_TOKEN=${HF_TOKEN}
+    
+    # Resource limits (adjust based on your machine)
+    deploy:
+      resources:
+        limits:
+          cpus: '4'
+          memory: 8G
+        reservations:
+          cpus: '2'
+          memory: 2G
+    
+    # Network configuration
+    networks:
+      - voice-studio-network
+    
+    # Logging
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+networks:
+  voice-studio-network:
+    driver: bridge
+
+# Volume definitions (optional: use named volumes instead of bind mounts)
+# volumes:
+#   voice-data:
+#   model-weights:
